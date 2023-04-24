@@ -16,7 +16,24 @@ body {
     color: var(--light);
 }
 
+h2 {
+    text-align: center;
+    color: #40ff00;
+    font-family: "Courier New", monospace;
+    font-weight: 545;
+}
+
 .watch {
+    text-align: center;
+    background-color: var(--darker);
+    width:100%;
+    max-width: 360px;
+    margin: 4rem auto;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+}
+
+.count {
     text-align: center;
     background-color: var(--darker);
     width:100%;
@@ -94,3 +111,22 @@ button:active {
     background-color: var(--dark);
 }
 
+#typewriter {
+    color: #40ff00;
+    font-family: "Courier New", monospace;
+    font-weight: 50;
+}
+
+#cursor {
+    color: #40ff00;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 0%;
+    }
+}

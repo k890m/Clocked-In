@@ -1,7 +1,14 @@
 // Global variables
 
 const time_el = document.querySelector('.watch .time');
-const break_el = document.querySelector('.watch .restTime');
+const break_el = document.querySelector('.count .restTime');
+
+// Variables for Animation 
+const titleDisplay = document.getElementById('typewriter');
+const phrases = 'Clocked in.';
+let sleepTime = 100;
+let x = 0;
+
 const start_btn = document.getElementById('start');
 const break_btn = document.getElementById('break');
 const pause_btn = document.getElementById('pause');
@@ -9,13 +16,15 @@ const reset_btn = document.getElementById('reset');
 const countdown_btn = document.getElementById('countdown');
 const pauseCD_btn = document.getElementById('pauseCountDown');
 
+//stopwatch variables
 
-let seconds = 600;
+let seconds = 0;
 let interval = null;
+
+//countdown variables
 
 let breakTime = 0;
 let intervalBreak = null;
-
 
 // Events listeners
 start_btn.addEventListener('click', start);
@@ -25,6 +34,21 @@ break_btn.addEventListener('click', setBreak);
 countdown_btn.addEventListener('click', countdown);
 pauseCD_btn.addEventListener('click', pauseBreak);
 
+// Title Animation
+
+function sleep(ms){
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const writeLoop = async () => {
+
+    for (let i = 0; i < phrases.length; i++){
+        titleDisplay.innerText = phrases.substring(0, i + 1);
+        await sleep(sleepTime);
+    } 
+}
+
+writeLoop();
 
 // Update the timer
 
@@ -94,7 +118,7 @@ function reset (){
 
 // Updates the countdown
 function setBreak(){
-    breakTime = Math.round(seconds / 15);
+    breakTime = Math.round(seconds * 0.2);
     reset();
 
     let hrs = Math.floor(breakTime / 3600);
